@@ -58,6 +58,22 @@ engine per platform makes the extension self-contained: install it, open a diff,
 
 → [Platform-specific VSIXs](https://github.com/buchochelliq-labs/intentumdiff-vscode/issues/21)
 
+## Diffing without a repository
+
+Comparing two loose files — a downloaded config against your own, a file before and after a
+tool ran — is the case handled worst today: the editor integration expects a git-backed
+workspace, so the engine is right there with no good way to drive it.
+
+Three surfaces answer it: a local client that assumes no repository, an **online diff** you can
+paste two files into, and a **playground in these docs** so you can try a real diff on the page
+that explains it, without installing anything.
+
+The online surfaces run **entirely in your browser**. The engine compiles to WebAssembly, so
+nothing is uploaded and no server ever sees your code — the same guarantee as the local tool,
+not a weaker one.
+
+→ [Diffing without a repo](https://github.com/buchochelliq-labs/intentumdiff-core/issues/15)
+
 ## Semantic review in the terminal
 
 Reviewing a diff in a terminal today means reading a scrolling dump — but semantic review is
