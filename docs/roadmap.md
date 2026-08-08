@@ -58,6 +58,25 @@ engine per platform makes the extension self-contained: install it, open a diff,
 
 → [Platform-specific VSIXs](https://github.com/buchochelliq-labs/intentumdiff-vscode/issues/21)
 
+## Semantic review in the terminal
+
+Reviewing a diff in a terminal today means reading a scrolling dump — but semantic review is
+inherently navigational: files, then change groups, then changes, then the intent behind them.
+A flat printout is the one shape that cannot express that.
+
+An interactive terminal UI built with [Ratatui](https://ratatui.rs/) would bring the structure
+the editor already has to anyone working over SSH, in a container, or simply in the terminal —
+fold a 400-line reformat to one line, jump to the next *meaningful* change, and read the
+evidence behind a classification.
+
+It lives in the Rust core rather than any one language's CLI, so every binding gets the same
+one.
+
+→ [Terminal review UI](https://github.com/buchochelliq-labs/intentumdiff-core/issues/10)
+· [Navigable view](https://github.com/buchochelliq-labs/intentumdiff-core/issues/11)
+· [Intent and evidence](https://github.com/buchochelliq-labs/intentumdiff-core/issues/12)
+· [Guardrails view](https://github.com/buchochelliq-labs/intentumdiff-core/issues/13)
+
 ## Trustworthy releases
 
 Less glamorous than the rest and more important than all of it. 0.0.1 shipped broken and was
