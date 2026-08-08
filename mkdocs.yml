@@ -1,0 +1,73 @@
+site_name: IntentumDiff
+site_description: Semantic code review — see what a change means, not which lines moved.
+site_url: https://buchochelliq-labs.github.io/intentumdiff-docs/
+repo_url: https://github.com/buchochelliq-labs/intentumdiff-docs
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - content.code.copy
+    - content.action.edit
+    - search.suggest
+  palette:
+    # The docs follow the reader's OS preference, the same way the extension follows
+    # the editor theme.
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - VS Code extension: vscode.md
+  - Python library and CLI: python.md
+  - How it works: concepts.md
+  - Diffing images: assets.md
+  - Languages: languages.md
+  - Roadmap: roadmap.md
+  - Extending and contributing: extending.md
+  - Privacy: privacy.md
+  - Troubleshooting: troubleshooting.md
+  - The 0.0.1 release: release-0-0-1.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  # Required for the card grid on the home page. Without it, markdown inside a
+  # `<div markdown>` is emitted verbatim — links, bold and all.
+  - md_in_html
+  - def_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  # Turns `:material-rocket-launch:` into an icon rather than that literal text.
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/buchochelliq-labs

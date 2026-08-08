@@ -1,0 +1,114 @@
+name: Docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Prose cannot be tested, but the parts readers copy can be. 0.0.1's README shipped an
+  # example that raised NameError and a link to a domain that did not exist.
+  verify:
+    name: Examples run and links resolve
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Against a REAL installed wheel, not a source checkout — the 0.0.1 trust-list bug
+      # existed only in the installed artefact.
+      # 0.0.1 was yanked, so there may be no installable release at all. Distinguish
+      # "the docs are wrong" from "there is nothing published to check them against" —
+      # a red X that means the second is a red X nobody reads.
+      - name: Install the engine
+        id: engine
+        continue-on-error: true
+        run: pip install --pre intentumdiff-python
+
+      - name: Every documented example produces its documented output
+        if: steps.engine.outcome == 'success'
+        run: python scripts/verify_examples.py
+
+      - name: No installable release to verify against
+        if: steps.engine.outcome != 'success'
+        run: |
+          echo "::warning::No installable release on PyPI (0.0.1 yanked). Examples were NOT"
+          echo "::warning::verified. The release gate verifies against a locally built wheel"
+          echo "::warning::before publishing, so this does not weaken the pre-publish check."
+
+      - name: Every link resolves
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --verbose docs/ README.md
+          fail: true
+
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-docs.txt
+      # --strict fails on a broken internal reference, which is the most common docs rot.
+      - run: mkdocs build --strict
+
+      # --strict catches broken references but NOT markup that silently renders as text.
+      # Material's card grid needs md_in_html and its icons need pymdownx.emoji; without
+      # them the home page shipped raw `**[Getting started](...)**` and literal
+      # `:material-rocket-launch:` to readers, and every build was green.
+      - name: No unrendered markup reached the built site
+        run: |
+          fail=0
+          if grep -rqoE ':material-[a-z-]+:' site/; then
+            echo "::error::literal icon shortcodes in the built site — pymdownx.emoji missing"; fail=1
+          fi
+          if grep -rq '\*\*\[' site/*.html; then
+            echo "::error::raw markdown emphasis in the built site — md_in_html missing"; fail=1
+          fi
+          if grep -rq 'markdown>' site/*.html; then
+            echo "::error::unprocessed markdown attribute in the built site"; fail=1
+          fi
+          [ "$fail" -eq 0 ] && echo "  no unrendered markup"
+          exit $fail
+
+  deploy:
+    name: Deploy to Pages
+    # Deliberately NOT gated on `verify`. That job asserts the PUBLISHED wheel produces
+    # what the docs claim, so while a release is broken it stays red — and the page most
+    # worth publishing at that moment is Troubleshooting. `verify` gates the RELEASE
+    # (see the intentumdiff-release skill), not the docs site.
+    needs: [build]
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-docs.txt
+      - run: mkdocs build --strict
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
