@@ -208,7 +208,28 @@ comment or an issue:
 ## In the editor
 
 Everything above is the engine's output. This is that same comparison inside VS Code, on the
-same two files:
+same two files — switching modes, moving the swipe divider, and walking the hotspot list:
+
+<figure markdown="0">
+  <video controls muted loop playsinline preload="metadata"
+         poster="../assets/vscode/perceptual-asset-diff-poster.jpg"
+         style="width:100%;border-radius:6px;display:block">
+    <source src="../assets/vscode/perceptual-asset-diff.mp4" type="video/mp4">
+    Your browser cannot play embedded video.
+    <a href="../assets/vscode/perceptual-asset-diff.mp4">Download the clip</a> instead.
+  </video>
+  <figcaption>The perceptual asset diff in VS Code — 30 seconds, no audio.</figcaption>
+</figure>
+
+Watch the banner as it lands: **53% pixels changed · 26.4 MAE · 59.8 RMSE · 108 hotspots**.
+The engine says "changed substantially" about an edit whose author would have described it as
+adding a halo.
+
+The **difference** view near the end is the clearest single frame. Unchanged pixels go black,
+so what remains is what moved — and what remains is the entire elephant, glowing along every
+contour, with the halo merely the brightest part of it.
+
+A single frame, annotated, for the parts worth naming:
 
 <figure markdown>
 ![The IntentumDiff review open on assets/elephant.png in VS Code: a PERCEPTUAL DIFF badge, the
