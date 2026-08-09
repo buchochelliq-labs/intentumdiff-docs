@@ -205,6 +205,38 @@ comment or an issue:
 <figcaption>Contact sheet — the whole comparison as a single shareable artifact.</figcaption>
 </figure>
 
+## In the editor
+
+Everything above is the engine's output. This is that same comparison inside VS Code, on the
+same two files:
+
+<figure markdown>
+![The IntentumDiff review open on assets/elephant.png in VS Code: a PERCEPTUAL DIFF badge, the
+Side by side / Onion / Swipe / Difference mode tabs with Swipe active, the swipe divider drawn
+down the middle of the artwork, dashed outlines around every changed region, a CHANGED-REGION
+HOTSPOTS list, and channel histograms beneath](assets/vscode/perceptual-asset-diff.png)
+<figcaption>The perceptual asset diff in VS Code — swipe mode, change outlines on, hotspots
+ranked beside it.</figcaption>
+</figure>
+
+Reading it left to right:
+
+- **`PERCEPTUAL DIFF`** next to the path, because the file is an image — the review switched
+  strategy on its own rather than reporting "binary file differs"
+- **Mode tabs** — the same Side by side / Onion / Swipe / Difference you dragged above, here
+  with **Swipe** active and the divider down the middle
+- **Outline changes** draws the change lasso directly over the artwork. The dashed boxes are
+  scattered across the whole figure, not gathered round the halo — the 52% is visible as
+  shape, before you read a single number
+- **Changed-region hotspots**, ranked and navigable. `Hotspot 1` is the real one at
+  **52.1% · 300,667 pixels · center region**; the rest are 4- and 5-pixel specks. Ranking
+  means you look at the one that matters first
+- **Channel histograms** per channel, for global shifts a lasso cannot show — a re-encode, a
+  colour-profile change, a quality drop
+
+`Native diff`, `Semantic-only`, `Stage` and `Revert` sit on the same toolbar, so an image
+review is a normal part of the flow rather than a detour into another app.
+
 ## Finding the change
 
 - **Hotspots** highlight regions that differ most, so a single altered icon in a large sprite
