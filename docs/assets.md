@@ -10,6 +10,48 @@ and leave you to open both in another application.
 IntentumDiff compares images **perceptually** — what the picture looks like, not how it was
 encoded.
 
+## A worked example
+
+Two renders of the same scene. One thing changed — the name on the hull.
+
+<figure markdown>
+![The same seascape, hull reading SEA BREEZE](assets/perceptual/sailboat-before.png)
+<figcaption>Before — the hull reads <code>SEA BREEZE</code></figcaption>
+</figure>
+
+<figure markdown>
+![The same seascape, hull reading IntentumDiff](assets/perceptual/sailboat-after.png)
+<figcaption>After — the hull reads <code>IntentumDiff</code></figcaption>
+</figure>
+
+Both files were re-encoded, so **every byte differs**. A byte comparison reports "binary file
+differs" and stops there — technically true, and useless. It cannot tell you whether the sky
+changed, the boat moved, or someone edited two characters.
+
+Here is what the engine reports:
+
+```text
+changed pixels : 10,418  (0.6510% of the image)
+dimensions     : 1600x1000 -> 1600x1000  (unchanged)
+```
+
+And the overlay marks *only* the lettering — not the sea, the sun, the clouds or the sand:
+
+<figure markdown>
+![Overlay highlighting only the hull lettering in red](assets/perceptual/overlay.png)
+<figcaption>Overlay — changed regions in red, everything unchanged left alone</figcaption>
+</figure>
+
+The heatmap answers the follow-up question, "is that the only place?", at a glance:
+
+<figure markdown>
+![Heatmap showing a single hotspot at the hull](assets/perceptual/heatmap.png)
+<figcaption>Heatmap — a single hotspot, so nothing else moved</figcaption>
+</figure>
+
+"0.15% of pixels changed, all of them here" is something you can act on. "The bytes differ" is
+not.
+
 ## Comparison modes
 
 Because no single view answers every question, the review surface offers several and lets you
