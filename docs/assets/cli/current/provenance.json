@@ -1,0 +1,30 @@
+{
+  "wheel_version": "0.0.2b1",
+  "wheel_sha256": "5d4dff214aa8fdb17ccc88f3b787880044c9f944bf335918f28c5d3e15c237f5",
+  "python_tested_commit": "9d1d150e3cdbaa8fef754ef916f8e1b3eb6e297d",
+  "python_pr_head": "256a9d9a8bcca48cb512503e1ac3024b51b4bc29",
+  "core_commit": "74eeb809ab663df91c3b3fd501240dc96d925f60",
+  "wheel_artifact": 11407195708,
+  "workflow_run": 37448070098,
+  "recorder": "rs-rich-record",
+  "recorder_version": "0.0.3",
+  "recorder_wrapper_commit": "6cf7fb9e1a7b447c06e09826e7dc4f2c0260fc0e",
+  "recorder_binary_sha256": "27f4655a3369bea59200f90d30863cc20c790ee96a450e950af268eac0fd9b39",
+  "capture_status": "stills_visually_inspected_video_durations_verified",
+  "scope": "Installed wheel; Rust-owned shared diff panels/tables. Separate Python guardrail report and errors retain existing presentation.",
+  "recorder_lock_sha256": "6d3fb40b38606b33149c3717112f5ab5c69eac14ea574a0f804e8d31e85b3f98",
+  "media_sha256": {
+    "style.png": "e98e184e5d1a1db47ba524dae602d1989d16cfc847ec64f2b589df7746661c23",
+    "style.mp4": "ecde01edb3f31188bc6301f1ea4ed82eccf66bf4cceeb8aa9488e6779d5333a6",
+    "guardrail.tape": "ee17d32d15fd02aadae19cddfad9e15403ef0006fcd13f5a03bef6abe50a1a46",
+    "guardrail.mp4": "7c632f0ffda6097dd2b11777daef8183254ab946dd976baa466134eff547e477",
+    "meaningful.mp4": "06ee9bf7a2e3d97fa6f38fb105462183c2eb885324fa26a2c7e4b3f5b44e191c",
+    "meaningful.png": "6c7c42ace980e9aa895a367e85de41e042c35130f60468163c7578f8d4bd2114",
+    "style.tape": "26f7d95f8c48f3ac7f8fc323eeb021e5ecb8c0a7d4d774e177507b2fd8e274e5",
+    "guardrail.png": "dee87a14c5f4532085e3abeaf2ba951f9e512a454968a2bf009dcb2481f02ae4",
+    "error.png": "557e18f70be5421ec4b98de3a6553468fb94009f8eaee3e1c3684d1060ebe51a",
+    "error.tape": "fb1bc482c2fb378c65302f52caf676f357bd2e799df3900a61faf2d95cd1c1b0",
+    "meaningful.tape": "c2639e170919314efc47080689f41c456847f75a4ce3bccb75448e8949bc6538",
+    "error.mp4": "4aed51a1a2c023d6aa87488f9b6918c23b9fd2b8b4d76cedd57d2b6157963bda"
+  }
+}

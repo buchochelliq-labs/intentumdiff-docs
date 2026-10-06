@@ -93,3 +93,8 @@ The CLI prints a banner when attached to a terminal. In scripts and CI:
 ```bash
 intentumdiff --no-banner file old.py new.py
 ```
+
+## Recorded CLI examples
+
+Watch the [current installed-wheel demonstrations](cli-demos/index.md) for meaningful changes,
+formatting-only edits, an actionable error and a protected-configuration review.
