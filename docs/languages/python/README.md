@@ -83,3 +83,16 @@ intentumdiff file before/code.py after/code.py
 ```
 
 The installed Python wheel includes its parser components. The native CLI requires a component directory. Compare the result with the source change described above; agreement between APIs alone is not proof of correctness.
+
+## VS Code incomplete edit
+
+This deliberately incomplete Python example changes `def f(` to `def g(`.
+The identifier changes, but neither input is a complete declaration. The expected result is
+an explicit source fallback with parse errors, not a claim of semantic equivalence or a
+style-only change.
+
+![Python source fallback showing the f to g edit](../../assets/vscode/current/edit.py.png)
+
+The current installed-VSIX capture shows the source change and “semantic equivalence unknown”.
+See [VS Code capabilities](../../vscode.md) and [capture provenance](../../vscode-evidence.md).
+Additional VS Code captures for additions, deletions, refactors and file moves remain pending.
