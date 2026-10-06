@@ -12,9 +12,11 @@ This worked example compares `notebook.py`. Advertised filename extensions: `.py
 
 Add a projection selecting `id` and `name` from active customers. Preserve the `customers` table and active-row filter. The output should report a meaningful code edit, not a formatting-only change.
 
+These are notebook source inputs for comparison, not standalone scripts; executing them requires a Databricks Spark session.
+
 ## Before
 
-```python
+```text
 # Databricks notebook source
 from pyspark.sql import functions as F
 
@@ -24,7 +26,7 @@ active = spark.table("customers").filter(F.col("active") == True)
 
 ## After
 
-```python
+```text
 # Databricks notebook source
 from pyspark.sql import functions as F
 
