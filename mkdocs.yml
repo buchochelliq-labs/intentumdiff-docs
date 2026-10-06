@@ -38,7 +38,9 @@ nav:
       - Capabilities: vscode.md
       - Desktop workflow video: vscode/workflow/index.md
       - Capture evidence: vscode-evidence.md
-  - Python library and CLI: python.md
+  - Python library and CLI:
+      - Overview: python.md
+      - Recorded CLI examples: cli-demos/index.md
   - How it works: concepts.md
   - Diffing images: assets/index.md
   - Languages:
