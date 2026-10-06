@@ -43,9 +43,7 @@ your code stays on your machine. See [Privacy](privacy.md).
 
 ## When it cannot parse
 
-If a parser cannot load, or a file is not valid in its language, IntentumDiff degrades to a
-token-level comparison rather than failing. You get a usable diff without semantic categories,
-and the fallback is recorded in diagnostics rather than hidden.
+Generic text comparison can report textual changes when no language-specific semantics are available. This is distinct from an engine failure: required Rust operations, terminal security/fuel failures and unsupported execution modes fail visibly. Invalid input can produce parser diagnostics or an error; a failed semantic operation must not be reported as an empty successful review.
 
 ## Where the work happens
 

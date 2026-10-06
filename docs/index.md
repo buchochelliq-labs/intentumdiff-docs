@@ -32,7 +32,7 @@ and becomes one change worth reading.
 
 ## What it supports
 
-**78 languages** ship in the box, each an independent WebAssembly parser — Python, TypeScript, Go, Rust, Java,
+The language catalogue covers Python, TypeScript, Go, Rust, Java,
 C#, C++, SQL dialects, Terraform, and more. See the [full list](languages.md).
 
 Language support is a **plugin, not a feature of the engine** — anyone can add a language
