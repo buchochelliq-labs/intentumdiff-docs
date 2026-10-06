@@ -1,108 +1,113 @@
 # VS Code extension
 
-The extension puts intent into the editor you already use. It does **not** replace the diff
-editor — VS Code's native diff stays exactly as it is, and IntentumDiff annotates it.
+Review what a change means alongside VS Code’s native diff. The extension displays results
+from the Rust engine through an external `intentumdiff` runtime; the VSIX does not bundle
+Python or the native engine.
 
-!!! important "It needs the engine"
+Install the runtime using [Getting started](getting-started.md), then set
+`intentumdiff.executable` if it is not on VS Code’s `PATH`. Choose your comparison base with
+`intentumdiff.ref` (normally `HEAD`). Save a change and run **IntentumDiff: Refresh Semantic Review**.
 
-    The extension is a thin front end over the `intentumdiff` command. Install the engine
-    first — see [Getting started](getting-started.md). Without it the extension has nothing
-    to talk to.
+## Understand a change while editing
 
-## What you see
+CodeLens puts the classification beside the changed source. This real Python example changes
+`return 2` to `return 3`: the returned value changes, so a behavioural change is expected.
 
-<figure markdown>
-![The semantic review panel showing intent, evidence and a native diff](assets/vscode/review.png)
-<figcaption>The review surface — semantic changes on the left, the native diff on the right</figcaption>
-</figure>
+![Python CodeLens showing the meaningful behavioural change](assets/vscode/current/source-codelens.png)
 
-- **CodeLens above each change** — `CATEGORY · why`, so the classification and its reason sit
-  next to the code rather than in a panel you have to go and find
-- **Semantic decorations** coloured by category, bound to your theme
-- **A peek view** for the detail behind a classification
-- **A review summary** with intent, release notes, evidence and diagnostics
+Use **Show Semantic Diff Overlay** to display annotations, **Hide Comment Changes** to reduce
+comment noise, and **Configure Visible Change Types** to choose the categories displayed.
+These controls change the view; they do not change the engine’s classification.
 
-### Intent
+## Compare the actual source
 
-The Intent tab answers "what did this change actually do?" — a summary, the derived facts, and
-the reasoning behind the classification.
+Open **Full VS Code Diff** to inspect the original and working-tree source. The native editor
+shows the `2 → 3` edit directly, so you can check the semantic label against the code.
 
-<figure markdown>
-![The intent tab summarising an internal change with score and evidence](assets/vscode/intent.png)
-<figcaption>Intent — what changed, why it was classified that way, and the risk</figcaption>
-</figure>
+![Native VS Code diff showing return 2 replaced with return 3](assets/vscode/current/native-diff.png)
 
-### Evidence and release notes
+**Next Semantic Change** and **Previous Semantic Change** navigate between changes.
+**Open Semantic-Only Native Diff** focuses the comparison; expand or collapse semantic diff
+context when you need more surrounding code. Peek provides change detail beside the editor.
+Fresh dedicated captures of Peek and these navigation controls are still pending.
 
-<figure markdown>
-![The evidence tab listing the raw changes behind each classification](assets/vscode/evidence.png)
-<figcaption>Evidence — the raw changes behind every classification, so a label can be checked</figcaption>
-</figure>
+## Review intent and evidence
 
-<figure markdown>
-![Release notes generated from the semantic diff](assets/vscode/release-notes.png)
-<figcaption>Release notes, generated from the diff rather than the commit messages</figcaption>
-</figure>
+Open **IntentumDiff: Open Custom Review** for the selected file. Read the intent group,
+then check its source evidence. This capture shows the valid Python edit after recovering
+from an incomplete edit.
 
-### Guardrails
+![Recovered Python review with one intent group and the before/after evidence](assets/vscode/current/recovered-review.png)
 
-Protected-config violations are surfaced separately, because they are the ones that should
-block a merge.
+The review toolbar exposes native diff, semantic-only diff, file staging and file revert.
+Stage and revert modify your working tree or index; inspect the file before using them.
+Use the review rail and evidence drawer to move between the summary and supporting detail.
+The dashboard and grouping controls help navigate a review involving several files.
 
-<figure markdown>
-![Guardrail violations shown against a protected configuration change](assets/vscode/guardrails.png)
-<figcaption>Guardrails — protected settings, immutable fields and resource identity changes</figcaption>
-</figure>
+Intent, evidence, release notes and guardrails serve different purposes: understand the
+classification, inspect the underlying change, describe it for readers, and check protected
+settings. Dedicated current captures for those views and Git actions remain on the
+[capture coverage checklist](vscode-evidence.md#coverage).
 
-### It follows your theme
+## Recognise incomplete source and recovery
 
-<figure markdown>
-![The same review surface rendered in a light theme](assets/vscode/light-theme.png)
-<figcaption>Light theme — chrome binds to your editor's colours, not a bespoke palette</figcaption>
-</figure>
+While you type, source may not parse. **SOURCE FALLBACK** means the engine can report a source
+change but cannot establish semantic equivalence. It is not a successful style-only result.
+The visible parse-error count explains why the review needs caution.
 
-- **CodeLens above each change** — `CATEGORY · why`, so the classification and its reason sit
-  next to the code rather than in a panel you have to go and find
-- **Semantic decorations** coloured by category, bound to your theme
-- **A peek view** for the detail behind a classification
-- **A review summary** with intent, release notes, evidence and diagnostics
+![Incomplete Python edit showing source fallback and semantic equivalence unknown](assets/vscode/current/pending-to-ready.png)
 
-Risk is derived from the category rather than configured separately: behavioural changes
-surface as behaviour, refactorings and moves as internal, style as excluded, and guardrail
-violations as critical.
+This still shows the completed fallback result; it does not show the loading transition.
+Fix and save the source to obtain a parsed review again, as in the recovered review above.
+See the [Python](languages/python/README.md#vs-code-incomplete-edit) and
+[JavaScript](languages/javascript/README.md#vs-code-incomplete-edit) examples for the exact incomplete edits.
 
-## Editing while you review
+## Review image changes
 
-The right-hand side of the diff is the **real working-tree file**, so it stays editable. Fix
-something mid-review and the engine re-runs, refreshing the intent annotations as you type.
+Image review presents the engine’s image comparison, metrics and hotspots. Use its comparison
+modes to inspect where pixels changed. Read [Diffing images](assets/index.md) for the meaning
+of the metrics and available views.
 
-## Settings
+![Image review in the dark theme](assets/vscode/current/asset-dark.png)
 
-| Setting | Purpose |
+### Light and high-contrast themes
+
+The same comparison is captured in each theme; the reported metrics agree.
+
+![The same image review in a light theme](assets/vscode/current/asset-light.png)
+
+![The same image review in a high-contrast theme](assets/vscode/current/asset-high-contrast.png)
+
+### Narrow layout
+
+The title, summary and metric labels wrap in a narrow viewport. The image controls and
+hotspots are below this capture’s visible area, so their narrow-layout usability still needs
+separate evidence. Icon-only toolbar tooltips and accessible names also need interaction checks.
+
+![Narrow image review summary with wrapped labels](assets/vscode/current/asset-narrow.png)
+
+## Settings and troubleshooting
+
+| Setting or command | When to use it |
 |---|---|
-| `intentumdiff.executable` | Path or command name for the engine. Machine-scoped |
-| `intentumdiff.ref` | The git ref to compare against |
-| `intentumdiff.liveServer.engine` | `auto`, `native` or `python` |
+| `intentumdiff.executable` | Choose the installed external runtime; this setting is machine-scoped |
+| `intentumdiff.ref` | Choose the Git reference to compare against |
+| `intentumdiff.liveServer.engine` | Select `auto`, `native` or `python` runtime transport |
+| **Show Output** | Inspect runtime messages |
+| **Open Diagnostics** | Inspect the runtime and extension state |
+| **Restart LiveServer** | Restart after correcting runtime configuration |
+| **Export Diagnostics Report** | Prepare diagnostic information to inspect before sharing |
 
-`intentumdiff.executable` is machine-scoped on purpose: a workspace cannot override it, so
-cloning a repository can never cause your editor to run a binary that repository chose.
+For setup failures, see [Troubleshooting](troubleshooting.md). An engine failure must remain
+an error; an empty review is not a substitute for a failed comparison.
 
-## Theme
+## Examples and capture provenance
 
-Chrome follows your editor theme rather than a bespoke palette, and change categories use
-contributed colour IDs (`intentumdiff.semanticChanges.*`) which you can override:
+Start with the [language guides](languages/gallery.md) for before/after examples. Current
+VS Code screenshots cover Python and JavaScript; the remaining language screenshots are
+pending. CLI screenshots in the language guides are separately identified.
 
-```json
-{
-  "workbench.colorCustomizations": {
-    "intentumdiff.semanticChanges.meaningful": "#e06c75"
-  }
-}
-```
-
-It is designed to read correctly in Dark+, Light+ and High Contrast.
-
-## If it does not work
-
-See [Troubleshooting](troubleshooting.md) — the usual cause is that VS Code's `PATH` does not
-include the environment the engine was installed into.
+All screenshots on this page came from an installed VSIX running against a real external
+runtime in a clean test profile. See [capture identities and coverage](vscode-evidence.md)
+for the exact candidate and limitations. They are pre-publication evidence, not verification
+of a Marketplace release.

@@ -34,7 +34,9 @@ theme:
 nav:
   - Home: index.md
   - Getting started: getting-started.md
-  - VS Code extension: vscode.md
+  - VS Code extension:
+      - Capabilities: vscode.md
+      - Capture evidence: vscode-evidence.md
   - Python library and CLI: python.md
   - How it works: concepts.md
   - Diffing images: assets/index.md
