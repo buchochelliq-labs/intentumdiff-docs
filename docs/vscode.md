@@ -8,6 +8,8 @@ Install the runtime using [Getting started](getting-started.md), then set
 `intentumdiff.executable` if it is not on VS Code’s `PATH`. Choose your comparison base with
 `intentumdiff.ref` (normally `HEAD`). Save a change and run **IntentumDiff: Refresh Semantic Review**.
 
+Watch the [16-second desktop workflow](vscode/workflow/index.md) for CodeLens → native diff → review.
+
 ## Understand a change while editing
 
 CodeLens puts the classification beside the changed source. This real Python example changes

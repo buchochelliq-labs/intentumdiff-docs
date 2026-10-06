@@ -41,7 +41,7 @@ It is evidence for this candidate, not a claim to have retested those later arti
 | Filters, grouping and dashboard | Dedicated current captures pending | Demonstrate each control |
 | Diagnostics, empty/error states and runtime recovery | Dedicated current captures pending | Capture actionable failures and recovery |
 | Language gallery | Python and JavaScript incomplete edits | Remaining languages and addition/deletion/refactor/move scenarios |
-| Desktop video | Recorded in the linked run | Inspect and embed the approved video |
+| Desktop video | [16-second CodeLens → native diff → review workflow](vscode/workflow/index.md); representative frames inspected | Broader capability and language recordings |
 | Published extension | Not yet verified | Repeat acceptance after publication |
 
 Screenshots alone do not establish keyboard accessibility or contrast compliance.

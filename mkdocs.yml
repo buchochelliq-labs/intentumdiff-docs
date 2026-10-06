@@ -36,6 +36,7 @@ nav:
   - Getting started: getting-started.md
   - VS Code extension:
       - Capabilities: vscode.md
+      - Desktop workflow video: vscode/workflow/index.md
       - Capture evidence: vscode-evidence.md
   - Python library and CLI: python.md
   - How it works: concepts.md
