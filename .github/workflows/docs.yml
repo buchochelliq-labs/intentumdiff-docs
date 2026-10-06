@@ -63,6 +63,8 @@ jobs:
       - run: pip install -r requirements-docs.txt
       # --strict fails on a broken internal reference, which is the most common docs rot.
       - run: mkdocs build --strict
+      - name: Rendered links and media resolve
+        run: python scripts/verify_site_links.py
 
       # --strict catches broken references but NOT markup that silently renders as text.
       # Material's card grid needs md_in_html and its icons need pymdownx.emoji; without
@@ -106,6 +108,8 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements-docs.txt
       - run: mkdocs build --strict
+      - name: Rendered links and media resolve
+        run: python scripts/verify_site_links.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

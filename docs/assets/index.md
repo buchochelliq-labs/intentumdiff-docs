@@ -15,12 +15,12 @@ encoded.
 Two renders of the same scene. One thing changed — the name on the hull.
 
 <figure markdown>
-![The same seascape, hull reading SEA BREEZE](assets/perceptual/sailboat-before.png)
+![The same seascape, hull reading SEA BREEZE](../assets/perceptual/sailboat-before.png)
 <figcaption>Before — the hull reads <code>SEA BREEZE</code></figcaption>
 </figure>
 
 <figure markdown>
-![The same seascape, hull reading IntentumDiff](assets/perceptual/sailboat-after.png)
+![The same seascape, hull reading IntentumDiff](../assets/perceptual/sailboat-after.png)
 <figcaption>After — the hull reads <code>IntentumDiff</code></figcaption>
 </figure>
 
@@ -38,14 +38,14 @@ dimensions     : 1600x1000 -> 1600x1000  (unchanged)
 And the overlay marks *only* the lettering — not the sea, the sun, the clouds or the sand:
 
 <figure markdown>
-![Overlay highlighting only the hull lettering in red](assets/perceptual/overlay.png)
+![Overlay highlighting only the hull lettering in red](../assets/perceptual/overlay.png)
 <figcaption>Overlay — changed regions in red, everything unchanged left alone</figcaption>
 </figure>
 
 The heatmap answers the follow-up question, "is that the only place?", at a glance:
 
 <figure markdown>
-![Heatmap showing a single hotspot at the hull](assets/perceptual/heatmap.png)
+![Heatmap showing a single hotspot at the hull](../assets/perceptual/heatmap.png)
 <figcaption>Heatmap — a single hotspot, so nothing else moved</figcaption>
 </figure>
 
@@ -61,12 +61,12 @@ Two versions of the same artwork. Ask anyone what changed and they will tell you
 added*.
 
 <figure markdown>
-![A neon-purple elephant cradling its calf](assets/perceptual/ellie-before.jpg)
+![A neon-purple elephant cradling its calf](../assets/perceptual/ellie-before.jpg)
 <figcaption>Before</figcaption>
 </figure>
 
 <figure markdown>
-![The same artwork, now with a golden halo](assets/perceptual/ellie-after.jpg)
+![The same artwork, now with a golden halo](../assets/perceptual/ellie-after.jpg)
 <figcaption>After — a halo was added. That is the obvious change, and it is not the whole story.</figcaption>
 </figure>
 
@@ -85,7 +85,7 @@ summary        : Image changed substantially: 52.6% of pixels differ.
 **Over half the image changed.** Not a halo — a re-render. The change mask shows exactly where:
 
 <figure markdown>
-![Change mask: white where pixels differ, showing the whole elephant, not only the halo](assets/perceptual/ellie-mask.jpg)
+![Change mask: white where pixels differ, showing the whole elephant, not only the halo](../assets/perceptual/ellie-mask.jpg)
 <figcaption>Change mask — white is changed. The halo is the blob at the top; everything else
 is the elephant being redrawn.</figcaption>
 </figure>
@@ -99,12 +99,12 @@ reviewer would have approved. If this were a UI asset, a logo, or an icon set, t
 change you discussed and the other 51% is the change that ships unnoticed.
 
 <figure markdown>
-![Heatmap concentrating on the halo and the figure's outline](assets/perceptual/ellie-heatmap.jpg)
+![Heatmap concentrating on the halo and the figure's outline](../assets/perceptual/ellie-heatmap.jpg)
 <figcaption>Heatmap — intensity of change. The halo dominates, but the outline glows throughout.</figcaption>
 </figure>
 
 <figure markdown>
-![Difference view, dark where identical](assets/perceptual/ellie-diff.jpg)
+![Difference view, dark where identical](../assets/perceptual/ellie-diff.jpg)
 <figcaption>Difference — unchanged pixels go dark, so what remains is what moved.</figcaption>
 </figure>
 
@@ -201,7 +201,7 @@ The engine also emits a **contact sheet** — every view in one image, for pasti
 comment or an issue:
 
 <figure markdown>
-![Contact sheet showing before, after, mask, overlay, heatmap and difference together](assets/perceptual/ellie-contact-sheet.jpg)
+![Contact sheet showing before, after, mask, overlay, heatmap and difference together](../assets/perceptual/ellie-contact-sheet.jpg)
 <figcaption>Contact sheet — the whole comparison as a single shareable artifact.</figcaption>
 </figure>
 
@@ -235,7 +235,7 @@ A single frame, annotated, for the parts worth naming:
 ![The IntentumDiff review open on assets/elephant.png in VS Code: a PERCEPTUAL DIFF badge, the
 Side by side / Onion / Swipe / Difference mode tabs with Swipe active, the swipe divider drawn
 down the middle of the artwork, dashed outlines around every changed region, a CHANGED-REGION
-HOTSPOTS list, and channel histograms beneath](assets/vscode/perceptual-asset-diff.png)
+HOTSPOTS list, and channel histograms beneath](../assets/vscode/perceptual-asset-diff.png)
 <figcaption>The perceptual asset diff in VS Code — swipe mode, change outlines on, hotspots
 ranked beside it.</figcaption>
 </figure>
