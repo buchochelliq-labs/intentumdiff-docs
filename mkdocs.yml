@@ -37,7 +37,7 @@ nav:
   - VS Code extension: vscode.md
   - Python library and CLI: python.md
   - How it works: concepts.md
-  - Diffing images: assets.md
+  - Diffing images: assets/index.md
   - Languages:
       - Overview: languages.md
       - Language guides and examples: languages/gallery.md
