@@ -32,7 +32,7 @@ It is evidence for this candidate, not a claim to have retested those later arti
 |---|---|---|
 | Python behavioural edit | CodeLens, native diff, recovered review | More edit scenarios |
 | Python and JavaScript incomplete edits | Explicit source fallback, parse-error count, f → g source change | More languages |
-| Review toolbar | Controls visible at normal width | Stage/revert, navigation and drawer interactions |
+| Review toolbar | Controls visible at normal width | Stage/revert, navigation and Intent/Evidence tab interactions |
 | Image review | Dark, light and high-contrast comparison | Each comparison mode in action |
 | Narrow layout | Summary wraps without horizontal clipping | Lower image controls, hotspots and tooltip/accessibility interactions |
 | Loading and recovery | Completed fallback and recovered result | Visible loading → ready transition |

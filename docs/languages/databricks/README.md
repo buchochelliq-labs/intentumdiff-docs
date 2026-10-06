@@ -2,7 +2,7 @@
 
 [All languages](../gallery.md)
 
-These real terminal captures use a historical development build. They are not current release certification; independent output review and current installed-wheel scenario checks remain pending.
+Current installed-wheel output and media for this corrected notebook example remain pending.
 
 ## Overview
 
@@ -10,53 +10,45 @@ This worked example compares `notebook.py`. Advertised filename extensions: `.py
 
 ## What changes
 
-As workflow YAML, add env parameter default prod and transform notebook task depending on ingest; preserve ingest task and etl_job name.
+Add a projection selecting `id` and `name` from active customers. Preserve the `customers` table and active-row filter. The output should report a meaningful code edit, not a formatting-only change.
+
+These are notebook source inputs for comparison, not standalone scripts; executing them requires a Databricks Spark session.
 
 ## Before
 
-````text
-name: etl_job
-tasks:
-  - task_key: ingest
-    notebook_task:
-      notebook_path: /notebooks/ingest
-````
+```text
+# Databricks notebook source
+from pyspark.sql import functions as F
+
+# COMMAND ----------
+active = spark.table("customers").filter(F.col("active") == True)
+```
 
 ## After
 
-````text
-name: etl_job
-parameters:
-  - name: env
-    default: prod
-tasks:
-  - task_key: ingest
-    notebook_task:
-      notebook_path: /notebooks/ingest
-  - task_key: transform
-    depends_on:
-      - task_key: ingest
-    notebook_task:
-      notebook_path: /notebooks/transform
-````
+```text
+# Databricks notebook source
+from pyspark.sql import functions as F
+
+# COMMAND ----------
+active = spark.table("customers").filter(F.col("active") == True).select("id", "name")
+```
 
 ## Things to know
 
-- Content is YAML workflow configuration, not Python notebook source despite filename notebook.py and language databricks.
-
-- Same source pair appears under databricks-workflow; routing must be investigated before counting this as notebook-language correctness evidence.
+- `notebook.py` currently routes through the Python parser. The Databricks header and cell separator are comments; this example does not certify notebook-cell semantics.
+- Workflow configuration has its own [Databricks workflow example](../databricks-workflow/README.md).
+- The earlier example incorrectly placed workflow YAML in `notebook.py`. Its historical capture has been withdrawn from this page because it does not depict the corrected source.
 
 ## Recorded output
 
-![Actual Databricks terminal capture](meaningful-change.svg)
-
-Recorded from a real native CLI through rs-rich-record. A refactoring label does not prove equivalent behavior. [Build identities](../provenance.md).
+A new installed-wheel capture of the corrected example is pending. No current release certification is claimed.
 
 ## Scenario coverage
 
 | Scenario | Status |
 |---|---|
-| Meaningful edit | Source example reviewed; output captured; independent result certification pending |
+| Meaningful edit | Corrected source example reviewed; installed-wheel output and capture pending |
 | Unchanged content | Not yet certified for this candidate |
 | Populate / clear a file | Not yet certified for this candidate |
 | Add / delete an entity | Not yet certified for this candidate |

@@ -37,11 +37,11 @@ ORDER BY order_count DESC;
 
 ## Things to know
 
-- Filename code.sql differs from advertised .tsql extension and the query uses broadly shared SQL syntax, so filename-based T-SQL selection is not demonstrated.
+- `code.sql` routes through the SQL parser. The query uses broadly shared SQL syntax; this fixture does not demonstrate distinct T-SQL parser selection or dialect-specific correctness. No routing override is applied.
 
 ## Recorded output
 
-![Actual T-SQL terminal capture](meaningful-change.svg)
+![Historical SQL-routed terminal capture](meaningful-change.svg)
 
 Recorded from a real native CLI through rs-rich-record. A refactoring label does not prove equivalent behavior. [Build identities](../provenance.md).
 
