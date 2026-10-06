@@ -1,6 +1,6 @@
 # CLI in action
 
-These recordings run the installed `0.0.2b1` wheel from Python #97. Each command uses the
+These recordings run the installed `0.0.2b1` wheel from Python #98. Each command uses the
 Rust semantic engine. The main terminal diff panels and change tables use Rust-owned
 **rs-rich 0.0.9**; Python supplies terminal settings and writes the returned text.
 
@@ -101,17 +101,17 @@ guardrails:
 
 | Item | Identity |
 |---|---|
-| Wheel SHA-256 | `5d4dff214aa8fdb17ccc88f3b787880044c9f944bf335918f28c5d3e15c237f5` |
-| Python tested merge commit | `9d1d150e3cdbaa8fef754ef916f8e1b3eb6e297d` |
-| Python PR head | `256a9d9a8bcca48cb512503e1ac3024b51b4bc29` |
-| Rust core | `74eeb809ab663df91c3b3fd501240dc96d925f60` |
-| Wheel artifact | `11407195708` |
+| Wheel SHA-256 | `30f6809ee971f29556da6ce23c7b593de07a6853748655145797f771c1f6ed1f` |
+| Python tested merge commit | `9c975818befdcf2991d62d2273c9cba37cea5be0` |
+| Python PR head | `43ec1617fa530584fcd04de3fbc976f059a5043f` |
+| Rust core | `820227c8e441abb7761ec0b56274a74873b45fcb` |
+| Wheel artifact | `11435893665` |
 | Recorder crate | `rs-rich-record = 0.0.3` from crates.io |
 | Recorder wrapper source | core `6cf7fb9e1a7b447c06e09826e7dc4f2c0260fc0e`, `tools/record-demo` |
 
-[Four-platform wheel verification run](https://github.com/buchochelliq-labs/intentumdiff-python/actions/runs/37448070098)
+[Four-platform wheel verification run](https://github.com/buchochelliq-labs/intentumdiff-python/actions/runs/37511241359)
 passed. These recordings are Linux terminal evidence; they are not screenshots of Windows
-or macOS. Stills were visually inspected and all four video durations verified.
+or macOS. Stills were visually inspected, all four video durations verified, and the documented exit codes checked against this installed wheel.
 [Full public provenance and media checksums](../assets/cli/current/provenance.json) includes
 recorder binary and lockfile hashes.
 
