@@ -7,7 +7,7 @@ Source for the IntentumDiff documentation site.
 ## Why this repo exists separately
 
 The docs describe a product made of several repositories — the Rust core, the Python package,
-the VS Code extension and 78 language parsers. No single one of them is the right home, so the
+the VS Code extension and its language parser components. No single one of them is the right home, so the
 docs live alongside all of them rather than inside one.
 
 ## The rule that matters

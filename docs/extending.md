@@ -2,9 +2,7 @@
 
 **Language support is a plugin, not a feature of the engine.**
 
-Each of the 78 supported languages is an independent **WebAssembly component**, built against
-a published SDK and loaded at runtime. Adding a language does not mean changing the engine,
-waiting for an engine release, or persuading anyone to merge a grammar into a core codebase.
+Language parsers are **WebAssembly components**, built against a published SDK and loaded at runtime. A component can serve multiple language names. A new parser must implement an execution mode supported by its host; adding a component does not automatically establish host or platform support.
 
 That is the whole design. A tool that supports "the languages we got round to" ages badly;
 one where a language is a component anybody can build does not.
@@ -12,8 +10,7 @@ one where a language is a component anybody can build does not.
 ## What this means in practice
 
 **A new language is a new repository.** It implements the parser interface, builds to
-`wasm32-wasip2`, and is loaded like any other. The engine neither knows nor cares which
-languages exist.
+`wasm32-wasip2`, and follows the shared Rust loading and capability policy. In 0.0.2, unsupported source-only InterpretCst execution is rejected; universal third-party InterpretCst hosting is not provided.
 
 **Plugins are sandboxed.** WebAssembly components have no ambient access to your filesystem,
 network or environment. A parser sees the source it was handed and returns a tree. This is why
@@ -36,7 +33,7 @@ The interface is defined as a WIT contract and the SDK generates the bindings:
   the SDK, the interface, and what a component must implement
 - **[intentumdiff-registry](https://github.com/buchochelliq-labs/intentumdiff-registry)** —
   how a component becomes certified and pinned
-- Any of the 78 `*-parser` repositories — a complete worked example
+- The first-party `*-parser` repositories — a complete worked example
 
 Most parsers wrap an existing [tree-sitter](https://tree-sitter.github.io/) grammar, so if a
 grammar already exists for your language, the work is mapping its node types onto the

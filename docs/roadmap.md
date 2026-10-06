@@ -11,7 +11,7 @@ status is never stale prose — if you want to know how far along something is, 
 
 ## Language coverage
 
-78 languages ship today, each an independent WebAssembly parser. Work continues in two
+Language support is provided by WebAssembly components; some serve multiple aliases. See the [current catalogue and limitations](languages.md). Work continues in two
 directions: **breadth** (languages with no parser yet) and **depth** (better category and role
 coverage in the ones that exist — a coarse mapping still produces a diff, just a blunt one).
 
