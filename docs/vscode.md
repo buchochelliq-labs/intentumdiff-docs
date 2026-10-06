@@ -43,7 +43,9 @@ from an incomplete edit.
 
 The review toolbar exposes native diff, semantic-only diff, file staging and file revert.
 Stage and revert modify your working tree or index; inspect the file before using them.
-Use the review rail and evidence drawer to move between the summary and supporting detail.
+Use the **Intent** and **Evidence** tabs to move between the summary and supporting detail.
+The current review view has no separate evidence drawer or review rail; legacy command names
+do not demonstrate that those panels exist.
 The dashboard and grouping controls help navigate a review involving several files.
 
 Intent, evidence, release notes and guardrails serve different purposes: understand the
