@@ -1,94 +1,31 @@
 # Languages
 
-**78 parsers ship inside the wheel.** There is nothing extra to download and no
-language pack to enable — installing `intentumdiff-python` installs all of them.
+Choose a language or format to see its source examples, recorded output and known limitations.
 
-If a file's language is not recognised, IntentumDiff degrades to a token-level comparison
-rather than failing: you still get a diff, just without semantic categories.
+[Browse language overviews and worked examples](languages/gallery.md)
 
-## Supported
+## What is included
 
-- `abap`
-- `adf`
-- `asciidoc`
-- `asm`
-- `assemblyscript`
-- `astro`
-- `bash`
-- `clojure`
-- `cmake`
-- `cpp`
-- `csharp`
-- `css`
-- `dart`
-- `databricks`
-- `dax`
-- `dbt_enricher`
-- `dbt_schema`
-- `dbt_sql`
-- `delphi`
-- `dockerfile`
-- `elixir`
-- `freebasic`
-- `generic`
-- `gitignore`
-- `go`
-- `gomod`
-- `graphql`
-- `groovy`
-- `haskell`
-- `html`
-- `html_renderer`
-- `index_engine`
-- `ini`
-- `java`
-- `js_ts`
-- `json`
-- `kotlin`
-- `latex`
-- `llm_renderer`
-- `lua`
-- `make`
-- `markdown`
-- `mdx`
-- `ocaml`
-- `odin`
-- `patch_renderer`
-- `perl`
-- `php`
-- `plsql`
-- `plugin_sdk`
-- `po`
-- `postscript`
-- `powershell`
-- `proto`
-- `puppet`
-- `python`
-- `qsharp`
-- `r`
-- `reasonml`
-- `ruby`
-- `rust`
-- `sas`
-- `scala`
-- `scss`
-- `sql`
-- `squirrel`
-- `svelte`
-- `swift`
-- `terminal_renderer`
-- `terraform`
-- `toml`
-- `tsql`
-- `vbnet`
-- `vue`
-- `wat`
-- `xml`
-- `yaml`
-- `zig`
+The 0.0.2 candidate catalogue has 74 language/format example entries, including aliases and generic text. This is not a count of independent parsers: components can serve multiple language names, and renderer/index components are not parsers.
+
+First-party parser components are provisioned into the Python wheel. The native CLI needs its parser component directory. Rust owns parser selection and semantic comparison; Python supplies the public API and transport.
+
+## Support boundaries
+
+- PowerShell is explicitly unavailable on Windows ARM64. Other platform results do not remove this limitation.
+- FreeBASIC is excluded from the enabled catalogue.
+- Generic text comparison reports textual changes without promising language-specific semantics. Its cold native startup is currently slow; see [core #155](https://github.com/buchochelliq-labs/intentumdiff-core/issues/155).
+- Unsupported source-only InterpretCst execution is rejected in 0.0.2. It does not silently return an empty successful review.
+- Required Rust failures propagate. A successful empty diff means no reported changes, not that an engine failure was hidden.
+
+## Reading the evidence
+
+The worked examples are a **development draft**, not release certification. Each language page includes before/after source, source-review caveats, a real rs-rich-record terminal capture and a scenario coverage table. Missing scenarios and pending independent output review are explicit.
+
+Captures are historical and have recorded build identities. These captures predate later fixes; they are not claims about the current candidate. Screenshots and Rust/Python parity alone do not establish correctness.
+
+The intended scenario set includes meaningful edits, unchanged input, file population/clearing, entity addition/deletion, renames, code moves/reordering, formatting, Git file moves, mixed edits, invalid syntax and guardrails. Each is marked verified or pending rather than inferred from another language.
 
 ## Adding a language
 
-Each parser is an independent WebAssembly component built against a published SDK, so a
-new language does not require a change to the engine. See the
-[plugin SDK](https://github.com/buchochelliq-labs/intentumdiff-plugin-sdk).
+Parsers are independent WebAssembly components built against the [plugin SDK](https://github.com/buchochelliq-labs/intentumdiff-plugin-sdk). Support depends on the execution contract and host capability; a new component is not automatically certified on every platform.

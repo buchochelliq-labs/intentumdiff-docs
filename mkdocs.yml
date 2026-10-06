@@ -38,7 +38,9 @@ nav:
   - Python library and CLI: python.md
   - How it works: concepts.md
   - Diffing images: assets.md
-  - Languages: languages.md
+  - Languages:
+      - Overview: languages.md
+      - Language guides and examples: languages/gallery.md
   - Roadmap: roadmap.md
   - Extending and contributing: extending.md
   - Privacy: privacy.md

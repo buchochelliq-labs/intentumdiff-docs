@@ -16,7 +16,7 @@ should not have shipped.
 
 | What you saw | What was actually happening |
 |---|---|
-| A wall of `Failed to catalog parser plugin` errors on every single run | The package left its own name off its internal trust list, so all 78 bundled parsers were rejected as untrusted third-party code |
+| A wall of `Failed to catalog parser plugin` errors on every single run | The package left its own name off its internal trust list, so the bundled parser components were rejected as untrusted third-party code |
 | `python -m intentumdiff` failed outright | There was no `__main__.py`. Only the `intentumdiff` command worked |
 | An error message pointed at documentation that did not exist | It linked to a domain that had never been registered |
 | The README's headline example raised `NameError` | It was a code fragment, not a runnable program. Nobody had ever executed it |

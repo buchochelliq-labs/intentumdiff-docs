@@ -49,7 +49,7 @@ or not on your `PATH`, the extension has nothing to talk to.
 ## Many "Failed to catalog parser plugin" errors
 
 A bug in **0.0.1** — see [the full account](release-0-0-1.md). Fixed since. The published package omitted its own distribution name from
-its first-party trust list, so all 78 bundled parsers were rejected as untrusted third-party
+its first-party trust list, so the bundled parser components were rejected as untrusted third-party
 code. Results were still produced, but every run printed a wall of errors.
 
 Upgrade:
@@ -82,8 +82,7 @@ name** on
 
 ## A diff falls back to line-level results
 
-If a language's parser cannot load, IntentumDiff degrades to a token-level comparison rather
-than failing. You still get a diff, but not semantic categories.
+Generic text results do not provide language-specific semantic categories. They are not a promise that every parser failure will recover: required Rust failures and terminal security/fuel errors propagate. An empty successful diff is not a substitute for an engine error.
 
 Check the output panel for parser load errors and include them in a bug report.
 

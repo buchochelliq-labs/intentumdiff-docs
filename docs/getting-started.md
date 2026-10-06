@@ -25,7 +25,7 @@ includes:
 | Component | What it is |
 |---|---|
 | The Rust core | The engine that parses, matches and classifies changes |
-| 78 language parsers | WebAssembly components, one per language |
+| Language parser components | Bundled WebAssembly components; some serve multiple language names |
 | The Python API and CLI | The `intentumdiff` command and the `intentumdiff` module |
 
 There is **no second download**. You do not install the Rust core separately, and nothing is
